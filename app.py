@@ -18,9 +18,6 @@ db = pymysql.connect(
 
 
 
-
-
-
 # get방식
 @app.route('/api/sayHello', methods=['GET'])
 def hello():
