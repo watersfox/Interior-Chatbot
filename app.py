@@ -23,12 +23,6 @@ db = pymysql.connect(
 def hello():
     return "Hello Kakao-Chatbot!!"
 
-
-# get방식
-@app.route('/api/sayHello', methods=['GET'])
-def hello():
-    return "Hello Kakao-Chatbot!!"
-
 # 카드형 응답
 @app.route('/api/showHello', methods=['POST'])
 def showHello():
