@@ -1,7 +1,7 @@
 # 1. 스킬서버예제(1)
 from flask import Flask, request, jsonify
 import sys
-#1
+
 
 app = Flask(__name__)
 
