@@ -5,7 +5,7 @@ import json
 #http://ec2-13-125-206-239.ap-northeast-2.compute.amazonaws.com:5000
 
 app = Flask(__name__)
-# 동양풍 아파트
+## 동양풍 아파트
 @app.route('/api/east_house', methods=['POST'])
 def east_house():
     try:
