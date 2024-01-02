@@ -91,45 +91,38 @@ def menuLink():
         title = request.json.get('action', {}).get('detailParams', {}).get('게시판메뉴', {}).get('value', '')
         
         if title == "고객후기":
-            imageUrl = "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg"
             webLinkUrl = "https://zipdoc.co.kr/postscript?category_cd=90"
         
         elif title == "시공사례":
-            imageUrl = "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg"
             webLinkUrl = "https://zipdoc.co.kr/product/construction/list"
         
         elif title == "인테리어 팁":
-            imageUrl = "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg"
             webLinkUrl = "https://zipdoc.co.kr/story/list?magazineType=1#page%3D1"
         
         elif title == "인테리어 아이디어":
-            imageUrl = "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg"
             webLinkUrl = "https://zipdoc.co.kr/product/resident/items"
         
         elif (title == "고객상담") or (title == ""):
-            imageUrl = "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg"
+            title = "고객상담"
             webLinkUrl = "https://zipdoc.co.kr/customer/faq"
 
         responseBody = {
             "version": "2.0",
             "template": {
                 "outputs": [
-                    {
-                        "basicCard": {
-                            "title": title,
-                            "description": title+" 게시판으로 이동하는 링크입니다.",
-                            "thumbnail": {
-                                "imageUrl": imageUrl
-                            },
-                            "buttons": [
-                                {
-                                    "action": "webLink",
-                                    "label": title+"로 이동",
-                                    "webLinkUrl": webLinkUrl
-                                }
-                            ]
+                {
+                    "textCard": {
+                    "title": title,
+                    "description": title+" 게시판으로 이동하는 링크입니다.",
+                    "buttons": [
+                        {
+                        "action": "webLink",
+                        "label": title+" 게시판으로 이동",
+                        "webLinkUrl": webLinkUrl
                         }
+                    ]
                     }
+                }
                 ]
             }
         }
