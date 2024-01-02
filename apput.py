@@ -2239,7 +2239,7 @@ def east_house():
                             "type": "basicCard",
                             "items": [
                                 {
-                                    "title": "치과_인테리어",
+                                    "title": "치과",
                                     "description": "This is a description.",
                                     "thumbnail": {
                                         "imageUrl": "https://www.dailydental.co.kr/data/photos/20220414/art_164915725959_5bbc07.jpg"
@@ -2248,35 +2248,35 @@ def east_house():
                                         {
                                             "action": "webLink",
                                             "label": "링크로 이동",
-                                            "webLinkUrl": "https://zipdoc.co.kr/product/detail/index/page?category_cd=20&pid=7163"
+                                            "webLinkUrl": "https://www.dailydental.co.kr/news/article.html?no=119226"
                                         }
                                     ]
                                 },
                                 {
-                                    "title": "치과_인테리어",
+                                    "title": "치과",
                                     "description": "This is another description.",
                                     "thumbnail": {
-                                        "imageUrl": "https://www.qplace.kr/data/portfolio/1948/e5055b33d8e91985145dd3fafc1e47dd_w800.jpg"
+                                        "imageUrl": "http://ymdesignstudio.com/wp-content/uploads/2020/10/%ED%81%AC%EA%B8%B0%EB%B3%80%ED%99%98027A3240-HDR_2-airtheme-standard-thumb-big-2000x1333.jpg"
                                     },
                                     "buttons": [
                                         {
                                             "action": "webLink",
                                             "label": "링크로 이동",
-                                            "webLinkUrl": "https://www.qplace.kr/portfolio/1948"
+                                            "webLinkUrl": "http://ymdesignstudio.com/samsungwhitedental/"
                                         }
                                     ]
                                 },
                                 {
-                                    "title": "치과_인테리어",
+                                    "title": "치과",
                                     "description": "This is a description.",
                                     "thumbnail": {
-                                        "imageUrl": "http://www.designtwoply.com/wp-content/uploads/2020/05/designtwoply0000-2.jpg"
+                                        "imageUrl": "https://www.interiorbay.co.kr/design/upload_file/BD38940/%EB%8F%99%ED%83%84%20%EB%B0%94%EB%A5%B8%EC%9D%B4%20(4).jpg"
                                     },
                                     "buttons": [
                                         {
                                             "action": "webLink",
                                             "label": "링크로 이동",
-                                            "webLinkUrl": "http://www.designtwoply.com/works/ysl-%EC%96%B4%ED%95%99%EC%9B%90-%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4/"
+                                            "webLinkUrl": "https://www.interiorbay.co.kr/kwa-38941-378?category_3=01"
                                         }
                                     ]
                                 } 
@@ -2290,9 +2290,9 @@ def east_house():
     except Exception as e:
         app.logger.error(f"An error occurred: {str(e)}", exc_info=True)
         return {"error": "Internal Server Error"}, 500
-# 미술학원
-# (if 용도형식:"병원(미술)" 입력한다면)
-# (print 미술학원)
+# 안과_인테리어
+# (if 용도형식:"병원(안과)" 입력한다면)
+# (print 안과_인테리어)
 @app.route('/api/retro_house', methods=['POST'])
 def retro_house():
     try:
@@ -2305,44 +2305,44 @@ def retro_house():
                             "type": "basicCard",
                             "items": [
                                 {
-                                    "title": "미술학원",
+                                    "title": "안과",
                                     "description": "This is a description.",
                                     "thumbnail": {
-                                        "imageUrl": "https://www.qplace.kr/data/portfolio/864/85867691a1022861afcddd5ddb75cb0e_w800.jpg"
+                                        "imageUrl": "https://cf.zipdoc.co.kr/static/item/40782/20181120120457280_FyRm7OYjM7.jpg"
                                     },
                                     "buttons": [
                                         {
                                             "action": "webLink",
                                             "label": "링크로 이동",
-                                            "webLinkUrl": "https://www.qplace.kr/portfolio/864"
+                                            "webLinkUrl": "https://zipdoc.co.kr/product/detail/index/page?category_cd=20&pid=2029"
                                         }
                                     ]
                                 },
                                 {
-                                    "title": "미술학원",
+                                    "title": "안과",
                                     "description": "This is another description.",
                                     "thumbnail": {
-                                        "imageUrl": "https://www.qplace.kr/data/portfolio/1647/a415b76b673fb10453d591d0becbfa65_w800.jpg"
+                                        "imageUrl": "https://www.04one.co.kr/data/plupload/o_1drabi670al41oja1d9ce361h01n.jpg"
                                     },
                                     "buttons": [
                                         {
                                             "action": "webLink",
                                             "label": "링크로 이동",
-                                            "webLinkUrl": "https://www.qplace.kr/portfolio/1647"
+                                            "webLinkUrl": "https://www.04one.co.kr/kr/list/view.php?idx=234"
                                         }
                                     ]
                                 },
                                 {
-                                    "title": "미술학원",
+                                    "title": "안과",
                                     "description": "This is a description.",
                                     "thumbnail": {
-                                        "imageUrl": "https://www.interiorbay.co.kr/design/upload_file/BD38940/%EC%B2%AD%EB%9D%BC%20%ED%81%B4%EB%A6%AD%20(2).jpg"
+                                        "imageUrl": "http://www.designtwoply.com/wp-content/uploads/2016/09/designtwoply0000-35.jpg"
                                     },
                                     "buttons": [
                                         {
                                             "action": "webLink",
                                             "label": "링크로 이동",
-                                            "webLinkUrl": "https://www.interiorbay.co.kr/kwa-38941-324?category_2=03"
+                                            "webLinkUrl": "http://www.designtwoply.com/works/%EC%9C%BC%EB%9C%B8%EC%95%88%EA%B3%BC-%EB%B3%91%EC%9B%90-%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4/"
                                         }
                                     ]
                                 } 
@@ -2356,9 +2356,9 @@ def retro_house():
     except Exception as e:
         app.logger.error(f"An error occurred: {str(e)}", exc_info=True)
         return {"error": "Internal Server Error"}, 500
-# 음악학원
-# (if 용도형식:"병원(음악)" 입력한다면)
-# (print 음악학원)
+# 내과_인테리어
+# (if 용도형식:"병원(내과)" 입력한다면)
+# (print 내과_인테리어)
 @app.route('/api/retro_house', methods=['POST'])
 def retro_house():
     try:
@@ -2371,38 +2371,38 @@ def retro_house():
                             "type": "basicCard",
                             "items": [
                                 {
-                                    "title": "음악학원",
+                                    "title": "내과",
                                     "description": "This is a description.",
                                     "thumbnail": {
-                                        "imageUrl": "https://www.qplace.kr/data/portfolio/2214/9f4edf7fc074a4eb30d40327b438e79c_w800.jpg"
+                                        "imageUrl": "http://www.designtwoply.com/wp-content/uploads/2020/05/designtwoply0000-1.jpg"
                                     },
                                     "buttons": [
                                         {
                                             "action": "webLink",
                                             "label": "링크로 이동",
-                                            "webLinkUrl": "https://www.qplace.kr/portfolio/2214"
+                                            "webLinkUrl": "http://www.designtwoply.com/works/%EC%B2%AD%EC%B6%98%EB%82%B4%EA%B3%BC-%EC%9E%90%EC%97%B0%EC%9D%84-%EB%8B%B4%EC%9D%80-%EB%B3%91%EC%9B%90%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4/"
                                         }
                                     ]
                                 },
                                 {
-                                    "title": "음악학원",
+                                    "title": "내과",
                                     "description": "This is another description.",
                                     "thumbnail": {
-                                        "imageUrl": "https://www.qplace.kr/data/portfolio/1703/c7b1c84927f6bfb1f864ab2071b6339b_w800.jpg"
+                                        "imageUrl": "http://www.designtwoply.com/wp-content/uploads/2017/11/designtwoply-project087-1.jpg"
                                     },
                                     "buttons": [
                                         {
                                             "action": "webLink",
                                             "label": "링크로 이동",
-                                            "webLinkUrl": "https://www.qplace.kr/portfolio/1703"
+                                            "webLinkUrl": "http://www.designtwoply.com/works/%EC%9D%B4%EC%A7%80%EB%82%B4%EA%B3%BC-%EC%A0%84%EC%A3%BC-%EB%B3%91%EC%9B%90-%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4/"
                                         }
                                     ]
                                 },
                                 {
-                                    "title": "음악학원",
+                                    "title": "내과",
                                     "description": "This is a description.",
                                     "thumbnail": {
-                                        "imageUrl": "https://www.qplace.kr/data/portfolio/1637/a4785bec8da5b5d2ea1e0fb56dc95918_w800.jpg"
+                                        "imageUrl": "http://www.designtwoply.com/wp-content/uploads/2016/09/designtwoply0000-38.jpg"
                                     },
                                     "buttons": [
                                         {
