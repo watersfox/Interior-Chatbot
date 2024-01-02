@@ -91,20 +91,25 @@ def menuLink():
         title = request.json.get('action', {}).get('detailParams', {}).get('게시판메뉴', {}).get('value', '')
         
         if title == "고객후기":
-            imageUrl = "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg",
+            imageUrl = "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg"
             webLinkUrl = "https://zipdoc.co.kr/postscript?category_cd=90"
         
         elif title == "시공사례":
-            imageUrl = "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg",
+            imageUrl = "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg"
             webLinkUrl = "https://zipdoc.co.kr/product/construction/list"
         
         elif title == "인테리어 팁":
-            imageUrl = "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg",
+            imageUrl = "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg"
             webLinkUrl = "https://zipdoc.co.kr/story/list?magazineType=1#page%3D1"
         
         elif title == "인테리어 아이디어":
-            imageUrl = "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg",
+            imageUrl = "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg"
             webLinkUrl = "https://zipdoc.co.kr/product/resident/items"
+        
+        else
+            title = "고객상담"
+            imageUrl = "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg"
+            webLinkUrl = "https://zipdoc.co.kr/customer/faq"
 
         responseBody = {
             "version": "2.0",
