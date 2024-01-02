@@ -106,8 +106,7 @@ def menuLink():
             imageUrl = "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg"
             webLinkUrl = "https://zipdoc.co.kr/product/resident/items"
         
-        else
-            title = "고객상담"
+        elif (title == "고객상담") or (title == ""):
             imageUrl = "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg"
             webLinkUrl = "https://zipdoc.co.kr/customer/faq"
 
