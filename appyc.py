@@ -84,39 +84,6 @@ def sayHello2():
         app.logger.error(f"An error occurred: {str(e)}", exc_info=True)
         return {"error": "Internal Server Error"}, 500
 
-#아메리카노
-@app.route('/아메리카노', methods=['POST'])
-def americano():
-    try:
-        # "커피" 엔티티 값 추출
-        coffee_name = request.json.get('action', {}).get('params', {}).get('coffee_name', '')
-        coffee_number = request.json.get('action', {}).get('detailParams', {}).get('sys_number', {}).get('origin', '')
-        coffee_number = re.findall(r'\d+', coffee_number)[0]
-
-        response_message = f"{coffee_name}를 {coffee_number}잔 주문했습니다."
-        json_data = request.get_json()
-        print(json_data)
-
-        # 응답 구성
-        response = {
-            "version": "2.0",
-            "template": {
-                "outputs": [
-                    {
-                        "simpleText": {
-                            "text": response_message
-                        }
-                    }
-                ]
-            }
-        }
-
-        return jsonify(response)
-    except Exception as e:
-        # 예외 처리 로그 기록
-        app.logger.error(f"An error occurred: {str(e)}", exc_info=True)
-        return {"error": "Internal Server Error"}, 500
-
 # 게시판링크
 @app.route('/menuLink', methods=['POST'])
 def menuLink():
