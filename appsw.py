@@ -20,7 +20,7 @@ def ruswjr():
     try:
         # "목재_" 엔티티 값 추출
         product = request.json.get('action', {}).get('detailParams', {}).get('인테리어정보', {}).get('origin', '')
-        url= "naver.com/" + product
+        url= "https://www.google.com/maps/search/" + product
         response = {
             "version": "2.0",
             "template": {
