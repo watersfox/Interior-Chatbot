@@ -6,20 +6,19 @@ import json
 
 app = Flask(__name__)
 
-#-----------------------------------------------------------------------------------[주거시설(아파트)]-----------------------------------------------------------------------------------
+#-----------------------------------------------------------------------------------[스타일]-----------------------------------------------------------------------------------
 
 @app.route('/api/sayHello', methods=['GET'])
 def hello():
     return "자동응답"
 
 
-@app.route('/api/apartment', methods=['POST'])
-def apartment():
+@app.route('/api/style', methods=['POST'])
+def style():
     try:
         form = request.json.get('action', {}).get('detailParams', {}).get('스타일', {}).get('value', '')
-        use = request.json.get('action', {}).get('detailParams', {}).get('용도형식', {}).get('value', '')
-        
-        if(form=="전통" and use == "아파트"):
+
+        if(form=="전통"):
             title = "동양풍"
             description = title + "스타일 인테리어입니다"
             
@@ -31,7 +30,7 @@ def apartment():
             webLinkUrl2 = "https://contents.ohou.se/projects/135460"
             webLinkUrl3 = "https://www.womansense.co.kr/woman/article/44688"
         
-        elif(form=="빈티지" and use == "아파트"):
+        elif(form=="빈티지"):
             title = "빈티지"
             description = title + "스타일 인테리어입니다"
             
@@ -43,7 +42,7 @@ def apartment():
             webLinkUrl2 = "https://blog.naver.com/h31122/221018516576"
             webLinkUrl3 = "https://www.homify.co.kr/ideabooks/4169325/%EB%A0%88%ED%8A%B8%EB%A1%9C-%EA%B0%90%EC%84%B1%EC%9D%98-43%ED%8F%89-%EC%95%84%ED%8C%8C%ED%8A%B8-%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4"
             
-        elif(form=="클래식" and use == "아파트"):
+        elif(form=="클래식"):
             title = "클래식"
             description = title + "스타일 인테리어입니다"
             
@@ -55,7 +54,7 @@ def apartment():
             webLinkUrl2 = "https://www.zipdeco.co.kr/hs/story/View.do?category=&mngIdx=1452"
             webLinkUrl3 = "https://www.interiorbay.co.kr/kwa-39008-59?category_3=05&pc=p"
             
-        elif(form=="내츄럴" and use == "아파트"):
+        elif(form=="내츄럴"):
             title = "내츄럴"
             description = title + "스타일 인테리어입니다"
             
@@ -79,8 +78,80 @@ def apartment():
             webLinkUrl1 = "https://blog.naver.com/indian2014/220704158614"
             webLinkUrl2 = "https://post.naver.com/viewer/postView.nhn?volumeNo=21037556&memberNo=15864193&searchKeyword=%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4&searchRank=27"
             webLinkUrl3 = "https://thefltnblack.tistory.com/223"
+            
+        else:
+            title2 = "죄송합니다. 다시 입력해주세요"
+        
+        responseBody = {
+            "version": "2.0",
+            "template": {
+                "outputs": [
+                    {
+                        "carousel": {
+                            "type": "basicCard",
+                            "items": [
+                                {
+                                    "title": title,
+                                    "description": description,
+                                    "thumbnail": {
+                                        "imageUrl": imageURL1
+                                    },
+                                    "buttons": [
+                                        {
+                                            "action": "webLink",
+                                            "label": "링크로 이동",
+                                            "webLinkUrl": webLinkUrl1
+                                        }
+                                    ]
+                                },
+                                {
+                                    "title": title,
+                                    "description": description,
+                                    "thumbnail": {
+                                        "imageUrl": imageURL2
+                                    },
+                                    "buttons": [
+                                        {
+                                            "action": "webLink",
+                                            "label": "링크로 이동",
+                                            "webLinkUrl": webLinkUrl2
+                                        }
+                                    ]
+                                },
+                                {
+                                    "title": title,
+                                    "description": description,
+                                    "thumbnail": {
+                                        "imageUrl": imageURL3
+                                    },
+                                    "buttons": [
+                                        {
+                                            "action": "webLink",
+                                            "label": "링크로 이동",
+                                            "webLinkUrl": webLinkUrl3
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+        print(request.get_json())
+        return jsonify(responseBody)
+    except Exception as e:
+        app.logger.error(f"An error occurred: {str(e)}", exc_info=True)
+        return {"error": "Internal Server Error"}, 500
 
-        elif(use == "아파트"):
+#-----------------------------------------------------------------------------------[아파트]-----------------------------------------------------------------------------------
+
+@app.route('/api/apartment', methods=['POST'])
+def apartment():
+    try:
+        use = request.json.get('action', {}).get('detailParams', {}).get('용도형식', {}).get('value', '')
+        
+        if(use == "아파트"):
             title = "아파트"
             description = title + " 인테리어입니다"
             
@@ -97,7 +168,7 @@ def apartment():
             webLinkUrl5 = "https://thefltnblack.tistory.com/223"
             
         else:
-            simpleText = "죄송합니다. 다시 입력해주세요"
+            title2 = "죄송합니다. 다시 입력해주세요"
         
         responseBody = {
             "version": "2.0",
@@ -178,8 +249,8 @@ def apartment():
                                     ]
                                 },
                                 {
-                                    "title": "네?",
-                                    "description": simpleText,
+                                    "title": title2,
+                                    "description": "",
                                     "thumbnail": {
                                         "imageUrl": ""
                                     },
@@ -259,7 +330,7 @@ def restaurant():
             webLinkUrl3 = "https://ms-housing.kr/bbs/board.php?bo_table=commercial_gallery&wr_id=1291&sfl=tags&stx=%EB%A6%AC%EC%B9%98%EC%95%88%ED%83%80%EC%9B%8C%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4&sop=or&device=pc"
         
         else:
-            simpleText = "죄송합니다. 다시 입력해주세요"
+            title2 = "죄송합니다. 다시 입력해주세요"
             
             
         responseBody = {
@@ -313,8 +384,8 @@ def restaurant():
                                     ]
                                 },
                                 {
-                                    "title": "네?",
-                                    "description": simpleText,
+                                    "title": title2,
+                                    "description": "",
                                     "thumbnail": {
                                         "imageUrl": ""
                                     },
@@ -343,82 +414,9 @@ def restaurant():
 @app.route('/api/cafe', methods=['POST'])
 def cafe():
     try:
-        form = request.json.get('action', {}).get('detailParams', {}).get('스타일', {}).get('value', '')
         use = request.json.get('action', {}).get('detailParams', {}).get('용도형식', {}).get('value', '')
-        
-        if(form=="전통" and use == "카페"):
-            title = "동양풍"
-            description = title + "스타일 카페 인테리어입니다"
-            
-            imageURL1 = "https://mblogthumb-phinf.pstatic.net/MjAyMTA0MjRfNjQg/MDAxNjE5MjcwNzcwNTU3.pmmZALgvlQ8QtVtAQsDk7lP45ibKufSYplGFn20Md7gg.5FjWlnXsZd4u_FO590fec_nhnzmVlRkEMtLt6uRSLuQg.JPEG.bhj5656/20210424%EF%BC%BF184657.jpg?type=w800"
-            imageURL2 = "https://www.qplace.kr/data/portfolio/2325/8b9d4011e2b417c5d973398b210cd86f_w800.jpg"
-            imageURL3 = "https://mblogthumb-phinf.pstatic.net/MjAyMDA0MjlfMzYg/MDAxNTg4MTM3MTAxNzgy.dx2uDDBbKJOcNodabTCwj3hMNKh_jJ6VHHt9pnXu8cgg.rydmVSpco7_-Mz5kpc_WOH_i4AMZCzcZsVHSuG56glsg.JPEG.yeon3314/SE-7c3de57a-de61-4519-be7c-4436bee98e3b.jpg?type=w800"
-            
-            webLinkUrl1 = "https://blog.naver.com/bhj5656/222327727196"
-            webLinkUrl2 = "https://www.qplace.kr/portfolio/2325"
-            webLinkUrl3 = "https://blog.naver.com/yeon3314/221935993083"
-        
-        elif(form=="빈티지" and use == "카페"):
-            title = "빈티지"
-            description = title + "스타일 카페 인테리어입니다"
-            
-            imageURL1 = "https://www.interiorbay.co.kr/design/upload_file/BD38940/a13d34c22b76052316ea5522fe1da7da_44838_1.jpg"
-            imageURL2 = "https://www.qplace.kr/data/portfolio/139/150b85062b4614fcaa12e70bdeeff562_c800x800.jpg"
-            imageURL3 = "https://ms-housing.kr/data/file/commercial_gallery/2040773419_NoKERhGY_59a7e6d4448e76c158adc52ab5b85674f1e0f829.jpg"
-            
-            webLinkUrl1 = "https://www.interiorbay.co.kr/kwa-38941-520?category_3=03"
-            webLinkUrl2 = "https://www.qplace.kr/portfolio/139"
-            webLinkUrl3 = "https://ms-housing.kr/bbs/board.php?bo_table=commercial_gallery&wr_id=651&sfl=tags&stx=%ED%98%B8%ED%94%84%EC%A7%91%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4&page=1&device=pc4"
-            
-        elif(form=="클래식" and use == "카페"):
-            title = "클래식"
-            description = title + "스타일 카페 인테리어입니다"
-            
-            imageURL1 = "https://mblogthumb-phinf.pstatic.net/MjAyMTAzMTlfMiAg/MDAxNjE2MTE2MjgzODkw.Is8zeIKCk5HBoj5ZLQ_6VxpCdyxH7EeDkBUfYVDKzkcg.kR3DDErlPgszMkYr9uDw7VIaaxvWghoH3kSIGKBLvo0g.JPEG.tnalalstn/1616115954912.jpg?type=w800"
-            imageURL2 = "https://postfiles.pstatic.net/MjAyMzAzMDJfMjQ1/MDAxNjc3NzQzMjMzMTE5.LSQ5Wc0Nooq_SH-0VsQsEWX1ohCTcLhJJYftPy_rdxsg.xrGmG7VlF8NVoLJcJRKR1HJe6FHSHSIytm51a4Pf1TMg.JPEG.hycco99/2.jpg?type=w966"
-            imageURL3 = "https://www.interiorbay.co.kr/design/upload_file/BD38940/02d2579f8ebb21477a1bad2aff6a06e8_76495_1.jpg"
-            
-            webLinkUrl1 = "https://blog.naver.com/tnalalstn/222285301095"
-            webLinkUrl2 = "https://blog.naver.com/PostView.naver?blogId=hycco99&logNo=223032726234&parentCategoryNo=&categoryNo=16&viewDate=&isShowPopularPosts=false&from=postView"
-            webLinkUrl3 = "https://interiorbay.co.kr:54306/kwa-38941-740?category_2=01"
-            
-        elif(form=="내츄럴" and use == "카페"):
-            title = "내츄럴"
-            description = title + "스타일 카페 인테리어입니다"
-            
-            imageURL1 = "https://image.ohou.se/i/bucketplace-v2-development/uploads/projects/cover_images/163358517477585695.jpg?w=1920&h=609&c=c"
-            imageURL2 = "https://mblogthumb-phinf.pstatic.net/MjAxODA0MTJfMjI5/MDAxNTIzNTE3Mzk5NTUw.oaj0d5INq2CAkvsrQZYKhTQVtLEAL0E3NbZ2bBvnmjgg.L7oI76eoAj2lJv3a22GxQt4IerOWdnJbKD-R_-Xd1ygg.JPEG.allthatseoul/%EC%B9%B4%ED%8E%98%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B417%ED%8F%89.jpg?type=w800"
-            imageURL3 = "https://www.interiorbay.co.kr/design/upload_file/BD38940/366e1facee869cfc57f5be4d6b72a708_78855_1.jpg"
-            
-            webLinkUrl1 = "https://ohou.se/advices/5256"
-            webLinkUrl2 = "https://blog.naver.com/allthatseoul/221251269244"
-            webLinkUrl3 = "https://www.interiorbay.co.kr/kwa-38941-725?category_2=01"
-        
-        elif(form=="모던" and use == "카페"):
-            title = "모던"
-            description = title + "스타일 카페 인테리어입니다"
-            
-            imageURL1 = "https://www.qplace.kr/data/portfolio/2237/1ea956cee9df22b278bb3cfe187075dd_w800.jpg"
-            imageURL2 = "https://www.qplace.kr/data/portfolio/1500/21a31cae44b7da2f4ac22eb4e7934e2f_w800.jpg"
-            imageURL3 = "https://www.qplace.kr/data/portfolio/329/a3b25bd05b3092ffa6da10e8c7c1bf72_w800.jpg"
-            
-            webLinkUrl1 = "https://www.qplace.kr/portfolio/2237"
-            webLinkUrl2 = "https://www.qplace.kr/portfolio/1500"
-            webLinkUrl3 = "https://www.qplace.kr/portfolio/329"
-        
-        elif(form=="유럽" and use == "카페"):
-            title = "유럽풍"
-            description = title + "스타일 카페 인테리어입니다"
-            
-            imageURL1 = "https://www.qplace.kr/data/portfolio/3705/c4d89ba4b3319c5add71480249bdab27_w800.jpg"
-            imageURL2 = "https://ms-housing.kr/data/file/commercial_gallery/634208394_ykqUaWeQ_ED81ACEAB8B0_15.jpg"
-            imageURL3 = "http://cp.bbsetheme.com/wp-content/uploads/2014/03/201403211FDD71B8B.jpg"
-            
-            webLinkUrl1 = "https://www.qplace.kr/portfolio/3705"
-            webLinkUrl2 = "https://ms-housing.kr/bbs/board.php?bo_table=commercial_gallery&wr_id=153"
-            webLinkUrl3 = "http://cp.bbsetheme.com/?p=170"
 
-        elif(use == "카페"):
+        if(use == "카페"):
             title = "카페"
             description = title + " 인테리어입니다"
             
@@ -437,7 +435,7 @@ def cafe():
             webLinkUrl6 = "https://www.qplace.kr/portfolio/3705"
             
         else:
-            simpleText = "죄송합니다. 다시 입력해주세요"
+            title2 = "죄송합니다. 다시 입력해주세요"
         
         responseBody = {
             "version": "2.0",
@@ -448,7 +446,7 @@ def cafe():
                             "type": "basicCard",
                             "items": [
                                 {
-                                    "title": title,
+                                    "title": "동양풍",
                                     "description": description,
                                     "thumbnail": {
                                         "imageUrl": imageURL1
@@ -462,7 +460,7 @@ def cafe():
                                     ]
                                 },
                                 {
-                                    "title": title,
+                                    "title": "빈티지",
                                     "description": description,
                                     "thumbnail": {
                                         "imageUrl": imageURL2
@@ -476,7 +474,7 @@ def cafe():
                                     ]
                                 },
                                 {
-                                    "title": title,
+                                    "title": "클래식",
                                     "description": description,
                                     "thumbnail": {
                                         "imageUrl": imageURL3
@@ -490,7 +488,7 @@ def cafe():
                                     ]
                                 },
                                 {
-                                    "title": title,
+                                    "title": "내츄럴",
                                     "description": description,
                                     "thumbnail": {
                                         "imageUrl": imageURL4
@@ -504,7 +502,7 @@ def cafe():
                                     ]
                                 },
                                 {
-                                    "title": title,
+                                    "title": "모던",
                                     "description": description,
                                     "thumbnail": {
                                         "imageUrl": imageURL5
@@ -518,7 +516,7 @@ def cafe():
                                     ]
                                 },
                                 {
-                                    "title": title,
+                                    "title": "유럽",
                                     "description": description,
                                     "thumbnail": {
                                         "imageUrl": imageURL6
@@ -532,8 +530,8 @@ def cafe():
                                     ]
                                 },
                                 {
-                                    "title": "네?",
-                                    "description": simpleText,
+                                    "title": title2,
+                                    "description": "",
                                     "thumbnail": {
                                         "imageUrl": ""
                                     },
@@ -584,7 +582,7 @@ def shop():
             webLinkUrl7 = "https://www.qplace.kr/portfolio/1734"
         
         else:
-            simpleText = "죄송합니다. 다시 입력해주세요"
+            title2 = "죄송합니다. 다시 입력해주세요"
             
         responseBody = {
             "version": "2.0",
@@ -693,8 +691,8 @@ def shop():
                                     ]
                                 },
                                 {
-                                    "title": "네?",
-                                    "description": simpleText,
+                                    "title": title2,
+                                    "description": "",
                                     "thumbnail": {
                                         "imageUrl": ""
                                     },
@@ -738,7 +736,7 @@ def exercise():
             webLinkUrl3 = "https://www.qplace.kr/portfolio/3299"
         
         else:
-            simpleText = "죄송합니다. 다시 입력해주세요"
+            title2 = "죄송합니다. 다시 입력해주세요"
             
             
         responseBody = {
@@ -792,8 +790,8 @@ def exercise():
                                     ]
                                 },
                                 {
-                                    "title": "네?",
-                                    "description": simpleText,
+                                    "title": title2,
+                                    "description": "",
                                     "thumbnail": {
                                         "imageUrl": ""
                                     },
@@ -843,7 +841,7 @@ def academy():
             webLinkUrl6 = "https://www.qplace.kr/portfolio/864"
         
         else:
-            simpleText = "죄송합니다. 다시 입력해주세요"
+            title2 = "죄송합니다. 다시 입력해주세요"
             
         responseBody = {
             "version": "2.0",
@@ -938,8 +936,8 @@ def academy():
                                     ]
                                 },
                                 {
-                                    "title": "네?",
-                                    "description": simpleText,
+                                    "title": title2,
+                                    "description": "",
                                     "thumbnail": {
                                         "imageUrl": ""
                                     },
@@ -983,7 +981,7 @@ def office():
             webLinkUrl3 = "https://www.qplace.kr/portfolio/2039"
         
         else:
-            simpleText = "죄송합니다. 다시 입력해주세요"
+            title2 = "죄송합니다. 다시 입력해주세요"
             
             
         responseBody = {
@@ -1037,8 +1035,8 @@ def office():
                                     ]
                                 },
                                 {
-                                    "title": "네?",
-                                    "description": simpleText,
+                                    "title": title2,
+                                    "description": "",
                                     "thumbnail": {
                                         "imageUrl": ""
                                     },
@@ -1082,7 +1080,7 @@ def hotel():
             webLinkUrl3 = "https://interior.realestate.daum.net/asp/story/View.do?lnb=2&mngIdx=1722&category=BBS_TY05_AT01_000008&pageIndex=3"
         
         else:
-            simpleText = "죄송합니다. 다시 입력해주세요"
+            title2 = "죄송합니다. 다시 입력해주세요"
             
             
         responseBody = {
@@ -1136,8 +1134,8 @@ def hotel():
                                     ]
                                 },
                                 {
-                                    "title": "네?",
-                                    "description": simpleText,
+                                    "title": title2,
+                                    "description": "",
                                     "thumbnail": {
                                         "imageUrl": ""
                                     },
@@ -1193,7 +1191,7 @@ def hospital():
             webLinkUrl9 = "https://www.qplace.kr/portfolio/1105"
         
         else:
-            simpleText = "죄송합니다. 다시 입력해주세요"
+            title2 = "죄송합니다. 다시 입력해주세요"
             
         responseBody = {
             "version": "2.0",
@@ -1330,8 +1328,8 @@ def hospital():
                                     ]
                                 },
                                 {
-                                    "title": "네?",
-                                    "description": simpleText,
+                                    "title": title2,
+                                    "description": "",
                                     "thumbnail": {
                                         "imageUrl": ""
                                     },
@@ -1377,7 +1375,7 @@ def living():
             webLinkUrl4 = "https://blog.naver.com/PostView.nhn?blogId=richism7&logNo=221999524736"
         
         else:
-            simpleText = "죄송합니다. 다시 입력해주세요"
+            title2 = "죄송합니다. 다시 입력해주세요"
             
         responseBody = {
             "version": "2.0",
@@ -1444,8 +1442,8 @@ def living():
                                     ]
                                 },
                                 {
-                                    "title": "네?",
-                                    "description": simpleText,
+                                    "title": title2,
+                                    "description": "",
                                     "thumbnail": {
                                         "imageUrl": ""
                                     },
@@ -1493,7 +1491,7 @@ def room():
             webLinkUrl5 = "https://contents.ohou.se/cards/25765410?affect_type=CardSearch&affect_id=0&query=%ED%99%94%EC%9E%A5%EC%8B%A4%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4"
         
         else:
-            simpleText = "죄송합니다. 다시 입력해주세요"
+            title2 = "죄송합니다. 다시 입력해주세요"
             
         responseBody = {
             "version": "2.0",
@@ -1574,8 +1572,8 @@ def room():
                                     ]
                                 },
                                 {
-                                    "title": "네?",
-                                    "description": simpleText,
+                                    "title": title2,
+                                    "description": "",
                                     "thumbnail": {
                                         "imageUrl": ""
                                     },
