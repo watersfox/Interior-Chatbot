@@ -12,7 +12,6 @@ app = Flask(__name__)
 def hello():
     return "자동응답"
 
-
 @app.route('/api/style', methods=['POST'])
 def style():
     try:
@@ -66,7 +65,7 @@ def style():
             webLinkUrl2 = "https://thefltnblack.tistory.com/661"
             webLinkUrl3 = "https://board.realestate.daum.net/gaia/do/estate/knowHow/read?bbsId=knowhow&articleId=175308"
         
-        elif(form=="유럽" and use == "아파트"):
+        elif(form=="유럽"):
             title = "유럽풍"
             description = title + "스타일 인테리어입니다"
             
@@ -80,7 +79,7 @@ def style():
             webLinkUrl3 = "https://thefltnblack.tistory.com/223"
             
         else:
-            title2 = "죄송합니다. 다시 입력해주세요"
+            title = "잘 이해하지 못했어요"
         
         responseBody = {
             "version": "2.0",
@@ -168,7 +167,7 @@ def apartment():
             webLinkUrl5 = "https://thefltnblack.tistory.com/223"
             
         else:
-            title2 = "죄송합니다. 다시 입력해주세요"
+            title = "잘 이해하지 못했어요"
         
         responseBody = {
             "version": "2.0",
@@ -247,20 +246,6 @@ def apartment():
                                             "webLinkUrl": webLinkUrl5
                                         }
                                     ]
-                                },
-                                {
-                                    "title": title2,
-                                    "description": "",
-                                    "thumbnail": {
-                                        "imageUrl": ""
-                                    },
-                                    "buttons": [
-                                        {
-                                            "action": "webLink",
-                                            "label": "링크로 이동",
-                                            "webLinkUrl": ""
-                                        }
-                                    ]
                                 }
                             ]
                         }
@@ -330,8 +315,7 @@ def restaurant():
             webLinkUrl3 = "https://ms-housing.kr/bbs/board.php?bo_table=commercial_gallery&wr_id=1291&sfl=tags&stx=%EB%A6%AC%EC%B9%98%EC%95%88%ED%83%80%EC%9B%8C%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4&sop=or&device=pc"
         
         else:
-            title2 = "죄송합니다. 다시 입력해주세요"
-            
+            title = "잘 이해하지 못했어요"
             
         responseBody = {
             "version": "2.0",
@@ -382,20 +366,6 @@ def restaurant():
                                             "webLinkUrl": webLinkUrl3
                                         }
                                     ]
-                                },
-                                {
-                                    "title": title2,
-                                    "description": "",
-                                    "thumbnail": {
-                                        "imageUrl": ""
-                                    },
-                                    "buttons": [
-                                        {
-                                            "action": "webLink",
-                                            "label": "링크로 이동",
-                                            "webLinkUrl": ""
-                                        }
-                                    ]
                                 }
                             ]
                         }
@@ -435,7 +405,7 @@ def cafe():
             webLinkUrl6 = "https://www.qplace.kr/portfolio/3705"
             
         else:
-            title2 = "죄송합니다. 다시 입력해주세요"
+            title = "잘 이해하지 못했어요"
         
         responseBody = {
             "version": "2.0",
@@ -528,20 +498,6 @@ def cafe():
                                             "webLinkUrl": webLinkUrl6
                                         }
                                     ]
-                                },
-                                {
-                                    "title": title2,
-                                    "description": "",
-                                    "thumbnail": {
-                                        "imageUrl": ""
-                                    },
-                                    "buttons": [
-                                        {
-                                            "action": "webLink",
-                                            "label": "링크로 이동",
-                                            "webLinkUrl": ""
-                                        }
-                                    ]
                                 }
                             ]
                         }
@@ -582,7 +538,7 @@ def shop():
             webLinkUrl7 = "https://www.qplace.kr/portfolio/1734"
         
         else:
-            title2 = "죄송합니다. 다시 입력해주세요"
+            title = "잘 이해하지 못했어요"
             
         responseBody = {
             "version": "2.0",
@@ -689,20 +645,6 @@ def shop():
                                             "webLinkUrl": webLinkUrl7
                                         }
                                     ]
-                                },
-                                {
-                                    "title": title2,
-                                    "description": "",
-                                    "thumbnail": {
-                                        "imageUrl": ""
-                                    },
-                                    "buttons": [
-                                        {
-                                            "action": "webLink",
-                                            "label": "링크로 이동",
-                                            "webLinkUrl": ""
-                                        }
-                                    ]
                                 }
                             ]
                         }
@@ -736,8 +678,7 @@ def exercise():
             webLinkUrl3 = "https://www.qplace.kr/portfolio/3299"
         
         else:
-            title2 = "죄송합니다. 다시 입력해주세요"
-            
+            title = "잘 이해하지 못했어요"
             
         responseBody = {
             "version": "2.0",
@@ -788,20 +729,6 @@ def exercise():
                                             "webLinkUrl": webLinkUrl3
                                         }
                                     ]
-                                },
-                                {
-                                    "title": title2,
-                                    "description": "",
-                                    "thumbnail": {
-                                        "imageUrl": ""
-                                    },
-                                    "buttons": [
-                                        {
-                                            "action": "webLink",
-                                            "label": "링크로 이동",
-                                            "webLinkUrl": ""
-                                        }
-                                    ]
                                 }
                             ]
                         }
@@ -841,7 +768,7 @@ def academy():
             webLinkUrl6 = "https://www.qplace.kr/portfolio/864"
         
         else:
-            title2 = "죄송합니다. 다시 입력해주세요"
+            title = "잘 이해하지 못했어요"
             
         responseBody = {
             "version": "2.0",
@@ -934,20 +861,6 @@ def academy():
                                             "webLinkUrl": webLinkUrl6
                                         }
                                     ]
-                                },
-                                {
-                                    "title": title2,
-                                    "description": "",
-                                    "thumbnail": {
-                                        "imageUrl": ""
-                                    },
-                                    "buttons": [
-                                        {
-                                            "action": "webLink",
-                                            "label": "링크로 이동",
-                                            "webLinkUrl": ""
-                                        }
-                                    ]
                                 }
                             ]
                         }
@@ -981,8 +894,7 @@ def office():
             webLinkUrl3 = "https://www.qplace.kr/portfolio/2039"
         
         else:
-            title2 = "죄송합니다. 다시 입력해주세요"
-            
+            title = "잘 이해하지 못했어요"
             
         responseBody = {
             "version": "2.0",
@@ -1031,20 +943,6 @@ def office():
                                             "action": "webLink",
                                             "label": "링크로 이동",
                                             "webLinkUrl": webLinkUrl3
-                                        }
-                                    ]
-                                },
-                                {
-                                    "title": title2,
-                                    "description": "",
-                                    "thumbnail": {
-                                        "imageUrl": ""
-                                    },
-                                    "buttons": [
-                                        {
-                                            "action": "webLink",
-                                            "label": "링크로 이동",
-                                            "webLinkUrl": ""
                                         }
                                     ]
                                 }
@@ -1080,8 +978,7 @@ def hotel():
             webLinkUrl3 = "https://interior.realestate.daum.net/asp/story/View.do?lnb=2&mngIdx=1722&category=BBS_TY05_AT01_000008&pageIndex=3"
         
         else:
-            title2 = "죄송합니다. 다시 입력해주세요"
-            
+            title = "잘 이해하지 못했어요"
             
         responseBody = {
             "version": "2.0",
@@ -1130,20 +1027,6 @@ def hotel():
                                             "action": "webLink",
                                             "label": "링크로 이동",
                                             "webLinkUrl": webLinkUrl3
-                                        }
-                                    ]
-                                },
-                                {
-                                    "title": title2,
-                                    "description": "",
-                                    "thumbnail": {
-                                        "imageUrl": ""
-                                    },
-                                    "buttons": [
-                                        {
-                                            "action": "webLink",
-                                            "label": "링크로 이동",
-                                            "webLinkUrl": ""
                                         }
                                     ]
                                 }
@@ -1191,7 +1074,7 @@ def hospital():
             webLinkUrl9 = "https://www.qplace.kr/portfolio/1105"
         
         else:
-            title2 = "죄송합니다. 다시 입력해주세요"
+            title = "잘 이해하지 못했어요"
             
         responseBody = {
             "version": "2.0",
@@ -1326,20 +1209,6 @@ def hospital():
                                             "webLinkUrl": webLinkUrl9
                                         }
                                     ]
-                                },
-                                {
-                                    "title": title2,
-                                    "description": "",
-                                    "thumbnail": {
-                                        "imageUrl": ""
-                                    },
-                                    "buttons": [
-                                        {
-                                            "action": "webLink",
-                                            "label": "링크로 이동",
-                                            "webLinkUrl": ""
-                                        }
-                                    ]
                                 }
                             ]
                         }
@@ -1375,7 +1244,7 @@ def living():
             webLinkUrl4 = "https://blog.naver.com/PostView.nhn?blogId=richism7&logNo=221999524736"
         
         else:
-            title2 = "죄송합니다. 다시 입력해주세요"
+            title = "잘 이해하지 못했어요"
             
         responseBody = {
             "version": "2.0",
@@ -1440,20 +1309,6 @@ def living():
                                             "webLinkUrl": webLinkUrl4
                                         }
                                     ]
-                                },
-                                {
-                                    "title": title2,
-                                    "description": "",
-                                    "thumbnail": {
-                                        "imageUrl": ""
-                                    },
-                                    "buttons": [
-                                        {
-                                            "action": "webLink",
-                                            "label": "링크로 이동",
-                                            "webLinkUrl": ""
-                                        }
-                                    ]
                                 }
                             ]
                         }
@@ -1491,7 +1346,7 @@ def room():
             webLinkUrl5 = "https://contents.ohou.se/cards/25765410?affect_type=CardSearch&affect_id=0&query=%ED%99%94%EC%9E%A5%EC%8B%A4%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4"
         
         else:
-            title2 = "죄송합니다. 다시 입력해주세요"
+            title = "잘 이해하지 못했어요"
             
         responseBody = {
             "version": "2.0",
@@ -1568,20 +1423,6 @@ def room():
                                             "action": "webLink",
                                             "label": "링크로 이동",
                                             "webLinkUrl": webLinkUrl5
-                                        }
-                                    ]
-                                },
-                                {
-                                    "title": title2,
-                                    "description": "",
-                                    "thumbnail": {
-                                        "imageUrl": ""
-                                    },
-                                    "buttons": [
-                                        {
-                                            "action": "webLink",
-                                            "label": "링크로 이동",
-                                            "webLinkUrl": ""
                                         }
                                     ]
                                 }
