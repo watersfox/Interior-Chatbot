@@ -143,12 +143,9 @@ def mapLink():
             "template": {
                 "outputs": [
                     {
-                        "basicCard": {
+                        "textCard": {
                             "title": loc+" 인테리어 업체",
                             "description": loc+" 주변 인테리어 업체를 검색합니다.",
-                            "thumbnail": {
-                                "imageUrl": "https://t1.daumcdn.net/friends/prod/category/M001_friends_ryan2.jpg"
-                            },
                             "buttons": [
                                 {
                                     "action": "webLink",
