@@ -7,17 +7,6 @@ import json
 app = Flask(__name__)
 
 
-db = pymysql.connect(
-    host='ezendb.chg7hygdd77i.ap-northeast-2.rds.amazonaws.com',
-    user='yechan',
-    password='1q2w3e!!',
-    database='test',
-    port=3306,
-    charset='utf8'
-)
-
-
-
 
 
 
@@ -163,40 +152,6 @@ def mapLink():
         app.logger.error(f"An error occurred: {str(e)}", exc_info=True)
         return {"error": "Internal Server Error"}, 500
 
-
-@app.route('/견적', methods=['POST'])
-def ruswjr():
-    try:
-        # "목재_" 엔티티 값 추출
-        wood = request.json.get('action', {}).get('detailParams', {}).get('목재_', {}).get('origin', '')
-        cursor = db.cursor()
-
-        # 쿼리 실행
-        price_query = "SELECT price FROM wood_price WHERE wood = %s"
-        cursor.execute(price_query, (wood,))
-
-        # 결과 가져오기
-        user_wood_price = cursor.fetchone()[0]
-
-        # 응답 구성
-        response = {
-            "version": "2.0",
-            "template": {
-                "outputs": [
-                    {
-                        "simpleText": {
-                            "text": user_wood_price
-                        }
-                    }
-                ]
-            }
-        }
-
-        return jsonify(response)
-    except Exception as e:
-        # 예외 처리 로그 기록
-        app.logger.error(f"An error occurred: {str(e)}", exc_info=True)
-        return {"error": "Internal Server Error"}, 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5031)
