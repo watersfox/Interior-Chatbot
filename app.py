@@ -1556,8 +1556,8 @@ def productPrice():
             # 결과가 여러 개일 경우를 위해 for문으로 처리
             user_product_price = ""
             for row in results:
-                mat_name, mat_price = row[0], row[1]
-                user_product_price += f"{mat_name}의 가격은 {mat_price}입니다\n"
+                mat_name, mat_price = row[0], (int)(row[1] * 10000)
+                user_product_price += f"{mat_name}의 가격은 {mat_price:,}원입니다\n"
 
         # 응답 구성
         response = {
@@ -1566,8 +1566,9 @@ def productPrice():
                 "outputs": [
                     {
                         "simpleText": {
-                            "text": user_product_price
-                        }
+                    		"text": "{}개의 {} 검색되었습니다.\n{}".format(len(results), product, user_product_price)
+			}	
+                        
                     }
                 ]
             }
