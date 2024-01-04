@@ -1,2 +1,2 @@
 # Interior-Chatbot 
-Puch or merge sourcecode file
+카카오 스킬용 py 소스파일
