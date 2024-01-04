@@ -1508,6 +1508,32 @@ def room():
     except Exception as e:
         app.logger.error(f"An error occurred: {str(e)}", exc_info=True)
         return {"error": "Internal Server Error"}, 500
+    
+
+@app.route('/인포', methods=['POST'])
+def interiorinfo():
+    try:
+        # "목재_" 엔티티 값 추출
+        product = request.json.get('action', {}).get('detailParams', {}).get('인테리어정보', {}).get('origin', '')
+        url= "https://www.google.com/maps/search/" + product
+        response = {
+            "version": "2.0",
+            "template": {
+                "outputs": [
+                    {
+                        "simpleText": {
+                            "text" : product + '의 url은'+url+'입니다.' 
+                        }
+                    }
+                ]
+            }
+        }
+
+        return jsonify(response)
+    except Exception as e:
+        # 예외 처리 로그 기록
+        app.logger.error(f"An error occurred: {str(e)}", exc_info=True)
+        return {"error": "Internal Server Error"}, 500
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
