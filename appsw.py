@@ -15,12 +15,12 @@ def get_db_connection():
         port=3306
     )
 
-@app.route('/견적', methods=['POST'])
-def ruswjr():
+@app.route('/인포', methods=['POST'])
+def interiorinfo():
     try:
         # "목재_" 엔티티 값 추출
         product = request.json.get('action', {}).get('detailParams', {}).get('인테리어정보', {}).get('origin', '')
-        url= "naver.com/" + product
+        url= "https://www.google.com/maps/search/" + product
         response = {
             "version": "2.0",
             "template": {
