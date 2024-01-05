@@ -743,12 +743,12 @@ def style():
                 ]
             }
         }
+        print(request.get_json())
         return jsonify(responseBody)
     except Exception as e:
         app.logger.error(f"An error occurred: {str(e)}", exc_info=True)
         return {"error": "Internal Server Error"}, 500
     
-
 @app.route('/인포', methods=['POST'])
 def interiorinfo():
     try:
